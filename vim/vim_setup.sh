@@ -13,12 +13,12 @@ then
     python -mplatform | grep centos && \
       sudo yum install -y ruby ruby-devel lua lua-devel luajit \
       luajit-devel ctags mercurial python python-devel \
-      tcl-devel perl perl-devel perl-ExtUtils-ParseXS \
+      tcl-devel perl perl-devel perl-ExtUtils-ParseXS nodejs npm \
       perl-ExtUtils-CBuilder perl-ExtUtils-Embed ncurses ncurses-devel git python-pip \
       || sudo apt-get install -y libncurses5-dev libgnome2-dev libgnomeui-dev \
       libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
       libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
-      ruby-dev mercurial 
+      ruby-dev mercurial nodejs npm
     python -mplatform | grep centos && sudo ln -s /usr/bin/xsubpp /usr/share/perl5/ExtUtils/xsubpp
     pushd  ~/
     hg clone https://code.google.com/p/vim
