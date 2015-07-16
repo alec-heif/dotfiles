@@ -1,0 +1,18 @@
+[user]
+	email = aheifetz@palantir.com
+	name = Alec Heifetz
+[core]
+  ignorecase = true
+  editor = vim
+[branch]
+  autosetuprebase = always
+[color]
+  ui = true
+[merge] 
+  tool = vimdiff
+[alias]
+  co = checkout
+
+[pager]
+	color = false
+	show = vim -R -

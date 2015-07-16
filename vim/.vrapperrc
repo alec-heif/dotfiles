@@ -1,0 +1,32 @@
+set smartindent
+set autoindent
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set autochdir
+set scrolloff=3
+set softtabstop=2
+set tabstop=2
+set expandtab
+set shiftround
+set shiftwidth=2
+set clipboard=unnamedplus
+
+let mapleader=","
+
+nmap <silent> <leader>c :%w !pbcopy<CR>
+
+nmap <space> :
+nmap ; :
+
+inoremap jk <Esc>
+inoremap df <Esc>/[)}"'\]>]<CR>:let @/ = ""<CR>a
+
+nnoremap <M-j> <C-W><C-j>
+nnoremap <M-k> <C-W><C-k>
+nnoremap <M-l> <C-W><C-l>
+nnoremap <M-h> <C-W><C-h>
+
+nnoremap gt <C-W>gt
+nnoremap gT <C-W>gT
