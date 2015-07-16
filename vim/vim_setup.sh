@@ -38,7 +38,7 @@ then
   cd ~/
   sudo rm -rf vim
   popd
-  sudo $PKG_MGR install -y build-essential cmake
+  sudo $PKG_MGR install -y build-essential cmake libclang
 
 elif [[ $OS_T == "darwin"* ]]
 then
