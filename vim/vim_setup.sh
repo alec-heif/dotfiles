@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#Only run in sudo mode
-if [[ $EUID -ne 0 ]]; then
-  echo "Script must be run as root"
-  exit 1
-fi
-
 #Make sure git is installed
 OS_T="$OSTYPE"
 if [[ $OS_T == "linux-gnu" ]]
