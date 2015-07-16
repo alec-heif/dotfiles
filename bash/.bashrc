@@ -1,15 +1,32 @@
 set -o vi
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+if [[ $OS_T == "linux-gnu" ]]
+then
+  python -mplatform | grep centos && sudo yum install -y bash-completion || sudo apt-get install -y bash-completion
+  if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+elif [[ $OS_T == "darwin"* ]]
+then
+  brew install bash-completion
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/bin:/usr/local/opt/findutils/bin:/Users/aheifetz/scripts:/opt/local/bin:/Users/aheifetz/bin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-export JAVA_HOME=$(/usr/libexec/java_home)
-export JRE_HOME=$(/usr/libexec/java_home)
-export GROOVY_HOME="/usr/local/opt/groovy/libexec"
-export PATH=$JAVA_HOME:$GROOVY_HOME:$PATH
+if [ -e /usr/libexec/java_home ]
+then
+  export JAVA_HOME=$(/usr/libexec/java_home)
+  export JRE_HOME=$(/usr/libexec/java_home)
+  export PATH=$JAVA_HOME:$PATH
+fi
+if [ -e /usr/local/opt/groovy/libexec ]
+then
+  export GROOVY_HOME="/usr/local/opt/groovy/libexec"
+  export PATH=$GROOVY_HOME:$PATH
+fi
 export PATH="/usr/local/bin/ant/bin:$PATH"
 
 alias grep='grep --color=auto'
