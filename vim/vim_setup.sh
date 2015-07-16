@@ -17,6 +17,7 @@ then
     libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
     libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
     ruby-dev mercurial 
+  python -mplatform | grep centos && sudo ln -s /usr/bin/xsubpp /usr/share/perl5/ExtUtils/xsubpp
   pushd  ~/
   hg clone https://code.google.com/p/vim
   cd vim
@@ -24,7 +25,7 @@ then
     --enable-multibyte \
     --enable-rubyinterp \
     --enable-pythoninterp \
-    --with-python-config-dir=/usr/lib/python2.7/config \
+    --with-python-config-dir=/usr/lib/python \
     --enable-perlinterp \
     --enable-luainterp \
     --enable-gui=gtk2 --enable-cscope --prefix=/usr
@@ -74,3 +75,10 @@ mkdir -p ~/.vim/colors
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp colors/solarized.vim ~/.vim/colors/
 vim +PluginInstall +qall
+pushd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer
+brew install node
+brew install npm
+cd ../tern_for_vim
+npm install
+popd
