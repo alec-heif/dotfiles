@@ -65,7 +65,7 @@ fi
 
 # add vimrc
 [ -e ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.old
-cp vimrc ~/.vimrc
+cp .vimrc ~/.vimrc
 
 # add .vim
 [ -e ~/.vim ] && mv ~/.vim ~/.vim.old
