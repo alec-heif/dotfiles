@@ -18,7 +18,6 @@ then
     libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
     ruby-dev mercurial nodejs npm
   python -mplatform | grep centos && sudo ln -s /usr/bin/xsubpp /usr/share/perl5/ExtUtils/xsubpp
-  pushd  ~/
   hg clone https://code.google.com/p/vim
   cd vim
   ./configure --with-features=huge \
@@ -35,9 +34,8 @@ then
   sudo update-alternatives --set editor /usr/bin/vim
   sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
   sudo update-alternatives --set vi /usr/bin/vim
-  cd ~/
+  cd ..
   sudo rm -rf vim
-  popd
   sudo $PKG_MGR install -y build-essential cmake
 
 elif [[ $OS_T == "darwin"* ]]
@@ -47,8 +45,6 @@ then
   brew install git
   brew install mercurial
   xcode-select --install
-  pushd ~/
-  sudo rm -rf vim
   hg clone https://code.google.com/p/vim
   cd vim
   ./configure --with-features=huge \
@@ -60,7 +56,8 @@ then
     --enable-luainterp \
     --enable-gui=gtk2 --enable-cscope --prefix=/usr
   sudo make && sudo make install
-  popd
+  cd ..
+  sudo rm -rf vim
   brew install cmake node npm
 fi
 # add vimrc
@@ -72,7 +69,7 @@ cp .vimrc ~/.vimrc
 mkdir -p ~/.vim/bundle
 mkdir -p ~/.vim/colors
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp colors/solarized.vim ~/.vim/colors/
+cp vim/colors/solarized.vim ~/.vim/colors/
 vim +PluginInstall +qall
 pushd ~/.vim/bundle/YouCompleteMe
 ./install.sh
