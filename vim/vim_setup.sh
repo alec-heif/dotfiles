@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#Only run in sudo mode
+if [[ $EUID -ne 0 ]]; then
+  echo "Script must be run as root"
+  exit 1
+fi
+
 #Make sure git is installed
 OS_T="$OSTYPE"
 if [[ $OS_T == "linux-gnu" ]]
@@ -38,7 +44,7 @@ then
   cd ~/
   sudo rm -rf vim
   popd
-  sudo $PKG_MGR install -y build-essential cmake libclang
+  sudo $PKG_MGR install -y build-essential cmake
 
 elif [[ $OS_T == "darwin"* ]]
 then
@@ -75,7 +81,7 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp colors/solarized.vim ~/.vim/colors/
 vim +PluginInstall +qall
 pushd ~/.vim/bundle/YouCompleteMe
-./install.sh --clang-completer
+./install.sh
 cd ../tern_for_vim
 npm install
 popd
