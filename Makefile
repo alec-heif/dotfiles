@@ -1,4 +1,5 @@
-.PHONY all bash tmux git vim
+
+.PHONY: all bash tmux git vim
 
 all: bash tmux git vim
 	@echo "Done!"
