@@ -63,7 +63,7 @@ then
       --enable-gui=gtk2 --enable-cscope --prefix=/usr
     sudo make && sudo make install
     popd
-    brew install cmake
+    brew install cmake node npm
   fi
 fi
 # add vimrc
@@ -79,8 +79,6 @@ cp colors/solarized.vim ~/.vim/colors/
 vim +PluginInstall +qall
 pushd ~/.vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
-brew install node
-brew install npm
 cd ../tern_for_vim
 npm install
 popd
