@@ -62,14 +62,14 @@ then
 fi
 # add vimrc
 [ -e ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.old
-cp .vimrc ~/.vimrc
+cp vim/.vimrc ~/.vimrc
 
 # add .vim
 [ -e ~/.vim ] && mv ~/.vim ~/.vim.old
 mkdir -p ~/.vim/bundle
 mkdir -p ~/.vim/colors
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp colors/solarized.vim ~/.vim/colors/
+cp vim/colors/solarized.vim ~/.vim/colors/
 vim +PluginInstall +qall
 pushd ~/.vim/bundle/YouCompleteMe
 ./install.sh
